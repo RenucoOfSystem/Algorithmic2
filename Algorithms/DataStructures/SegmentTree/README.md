@@ -1,0 +1,7 @@
+Tarea:
+El tamaño exacto del array depende si n(la cantidad de numeros de input) es exactamente una potencia de 2
+Es decir 2, 4, 8, 16, etc. o no. Si este es el caso en tonces el tamaño es 2*n -1 debido a que ser un arbol binario completo y todos los padres tendran 2 hijos hasta el ultimo nivel y -1 debido al primero. Si el n no es un potencia de 2 entonces el tamaño es 2*x-1 donde x
+es la potencia de 2 mas pequeña despues de n. Es decir si el n= 6 la siguiente potencia de 2 mas grande es 8-->8*2-1=15 espacios son necesarios para armar el segment tree, debido a que abra espacios en el array que no guardaran nada ya que no sera un arbol binario completo y puede que en el ultimo nivel no haya nodos hijos del penultimo nivel.
+
+---Lazy propagation---
+Cuando se quiere hacer varios "updates" en un rango, podemos postergar algunos de estos y realizar solo los necesarios. Para esto crearemos un array "lazy" donde estaran todos los nodos inicializados en "0", si queremos actualizar un nodo tenemos que actualizar a sus descendientes pero en este caso solo actualizamos el nodo que necesitamos y postergamos la actualizacion de sus hijos y guardamos esta informacion en nuestro array lazy. En la posicion i del array lazy si encontramos u  0 significa que no necesita actualizarse y un valor diferente significa que en esa posicion se tiene que modificar con ese valor en el segment tree.
