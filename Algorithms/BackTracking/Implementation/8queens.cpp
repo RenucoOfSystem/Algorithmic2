@@ -3,6 +3,7 @@
 #define output freopen("out.txt", "w", stdout)
 using namespace std; 
 
+
 int rows[8]; 
 
 bool isValid(int row, int column) {
