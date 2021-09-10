@@ -66,6 +66,35 @@ char maxPrefix(){
     }
 }
 
+//TAREA
+void deleteWord(string word){
+    if(searchWord(word)){
+        node *currentNode =  trie;
+        int levelCounter = 1;
+
+        int actualLevel = 0;
+        for (int i = 0; i< word.length(); i++) {
+            int character = word[i] - 'a';
+            if(currentNode->childrens[character]->isWord && word.length() != i+1) {
+                levelCounter+= actualLevel;
+            }
+            currentNode = currentNode->childrens[character];
+            actualLevel++;
+        }
+        currentNode->isWord = false;
+        currentNode =  trie;
+        for (int i = 0; i< levelCounter; i++) {
+            int character = word[i] - 'a';
+            currentNode = currentNode->childrens[character];
+        }
+        currentNode = NULL;
+        delete currentNode;
+        cout << "Se elimino---> " << "'" << word <<  "'" << " del trie" << endl;
+    }else{
+        cout << "Palabra no encontrada"<< endl;
+    }
+}
+
 int main(){
     init();
     insert("alan");
